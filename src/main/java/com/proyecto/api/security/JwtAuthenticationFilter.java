@@ -29,6 +29,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
+        String path = request.getRequestURI();
+
+        // 🔓 Rutas públicas que no requieren autenticación
+        if (path.equals("/api/universidad/prediccion") ||
+            path.startsWith("/api/auth") ||
+            path.equals("/api/user/registrar")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         // 1. Obtener el header Authorization
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
@@ -54,9 +64,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             new UsernamePasswordAuthenticationToken(
                 username,
                 null,
-                List.of(new SimpleGrantedAuthority(rol.toUpperCase())) // 👈 asegura compatibilidad con hasRole("ADMIN")
-               // List.of(new SimpleGrantedAuthority("ROLE_" + rol.toUpperCase()))
-
+                List.of(new SimpleGrantedAuthority(rol.toUpperCase()))
             );
 
         authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController 
-@RequestMapping("/universidad")
+@RequestMapping("/api/universidad")
 public class UniversidadController {
 
     @Autowired
@@ -84,7 +84,7 @@ public class UniversidadController {
     
     
     
-    
+    @PreAuthorize("hasRole('ADMIN')") // ✅ ESTA LÍNEA ES OBLIGATORIA
     @GetMapping("/csv")
     public ResponseEntity<List<Map<String, String>>> obtenerDatosDesdeCSV() {
         List<Map<String, String>> datos = servicioUniversidad.leerDesdeArchivoCSV();

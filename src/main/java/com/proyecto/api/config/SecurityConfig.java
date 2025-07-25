@@ -63,6 +63,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**", "/api/user/registrar").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/universidad/prediccion").permitAll()
+                .requestMatchers(HttpMethod.GET, "/universidad/csv").hasRole("ADMIN")
+                
                // .requestMatchers(HttpMethod.GET, "/api/universidad/csv").hasAnyRole("ADMIN") // o solo "ADMIN"
               //  .requestMatchers(HttpMethod.GET, "/api/user/listar").hasRole("ADMIN") // ✅ LÍNEA NUEVA
                // .requestMatchers("/api/user/listar").hasRole("ADMIN")  // ← SIN prefijo "ROLE_"
