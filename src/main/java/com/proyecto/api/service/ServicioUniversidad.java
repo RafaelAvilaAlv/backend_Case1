@@ -104,9 +104,11 @@ public class ServicioUniversidad {
     
     public List<Map<String, String>> leerDesdeArchivoCSV() {
         List<Map<String, String>> lista = new ArrayList<>();
-        String rutaAbsoluta = "C:\\Users\\Usuario\\Desktop\\Spring5\\Workspace\\UniversityScoreAPI\\python_model\\QS World University Rankings 2025 (Top global universities).csv";
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(rutaAbsoluta), StandardCharsets.UTF_8))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(
+                getClass().getClassLoader().getResourceAsStream("QS World University Rankings 2025 (Top global universities).csv"),
+                StandardCharsets.UTF_8))) {
+
             String[] headers = br.readLine().split(",");
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -117,7 +119,8 @@ public class ServicioUniversidad {
                 }
                 lista.add(fila);
             }
-        } catch (IOException e) {
+
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
 

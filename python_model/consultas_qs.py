@@ -14,8 +14,7 @@ import sys
 import os
 
 # Ruta dinámica del archivo
-ruta_actual = os.path.join(os.getcwd(), "python_model")
-ruta_csv = os.path.join(ruta_actual, "qs World University Rankings 2025 (Top global universities).csv")
+ruta_csv = "/app/python_model/QS World University Rankings 2025 (Top global universities).csv"
 
 try:
     df = pd.read_csv(ruta_csv, encoding="latin1")
