@@ -64,7 +64,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             new UsernamePasswordAuthenticationToken(
                 username,
                 null,
+<<<<<<< HEAD
                 List.of(new SimpleGrantedAuthority(rol.toUpperCase()))
+=======
+                List.of(new SimpleGrantedAuthority(rol.toUpperCase())) // 👈 asegura compatibilidad con hasRole("ADMIN")
+               // List.of(new SimpleGrantedAuthority("ROLE_" + rol.toUpperCase()))
+
+                
+>>>>>>> c5ad880 (Actualización del proyecto UniversityScoreAPI)
             );
 
         authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

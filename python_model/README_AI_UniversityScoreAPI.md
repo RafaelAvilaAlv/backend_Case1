@@ -121,3 +121,13 @@ El modelo predice con alta precisión el puntaje global de una universidad basá
 Proyecto desarrollado como parte de un sistema integrado Spring Boot + Python para análisis educativo. Ideal para dashboards, rankings dinámicos o asesoría académica.
 
 ---
+
+
+## En caso de tener problemas al correr usar primero estos comando en el forntend
+
+pip install pandas
+pip install joblib
+pip install scikit-learn
+
+---
+

@@ -63,12 +63,20 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**", "/api/user/registrar").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/universidad/prediccion").permitAll()
+<<<<<<< HEAD
                 .requestMatchers(HttpMethod.GET, "/universidad/csv").hasRole("ADMIN")
                 
                // .requestMatchers(HttpMethod.GET, "/api/universidad/csv").hasAnyRole("ADMIN") // o solo "ADMIN"
               //  .requestMatchers(HttpMethod.GET, "/api/user/listar").hasRole("ADMIN") // ✅ LÍNEA NUEVA
+=======
+                .requestMatchers(HttpMethod.GET, "/universidad/csv").hasAnyRole("ADMIN") // o solo "ADMIN"
+             
+                
+                //  .requestMatchers(HttpMethod.GET, "/api/user/listar").hasRole("ADMIN") // ✅ LÍNEA NUEVA
+>>>>>>> c5ad880 (Actualización del proyecto UniversityScoreAPI)
                // .requestMatchers("/api/user/listar").hasRole("ADMIN")  // ← SIN prefijo "ROLE_"
               //  .requestMatchers("/api/user/debug-rol").authenticated()
+                
                 
                 
                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**").permitAll()
